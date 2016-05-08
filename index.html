@@ -1,7 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<DOCTYPE html>
+  <html lang="en">
 
-<head>
+  <head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,133 +10,195 @@
     <meta name="author" content="">
 
     <title>Bare - Start Bootstrap Template</title>
-
+    <script src="js/jquery-2.2.3.min.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
+
+    <link href="css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="js/script.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-toggle.min.js"></script>
+
     <!-- Custom CSS -->
     <style>
     body {
-        padding-top: 70px;
-        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+      padding-top: 70px;
+      /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     }
     </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-</head>
+  </head>
 
-<body>
+  <body>
 
     <!-- Navigation -->
+    <!--
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">LineTrace Grandprix</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <!-- Page Content -->
     <div class="container">
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="navbar-brand" href="#">LineTrace Grandprix</a>
+</div>
 
-        <div class="row">
-            <div class="col-lg-12 text-center">
-              <image src = "image/LTGranprix.png" width = 60%>
-            </div>
-              <br><br>
-              <!-- <div class = "col-sm-4"></div> -->
-              <div class = "col-sm-offset-4 col-sm-4 ">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Speed</h3>
-                  </div>
-                  <div class="panel-body">
-                    Panel content
-                  </div>
-                </div>
-              </div>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<ul class="nav navbar-nav">
+<li>
+<a href="#">About</a>
+</li>
+<li>
+<a href="#">Services</a>
+</li>
+<li>
+<a href="#">Contact</a>
+</li>
+</ul>
+</div>
 
-              <div class = "col-sm-offset-2 col-sm-3">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">oox</h3>
-                  </div>
-                  <div class="panel-body">
-                    Panel content
-                  </div>
-                </div>
-              </div>
-              <div class = "col-sm-3">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">oxx</h3>
-                  </div>
-                  <div class="panel-body">
-                    Panel content
-                  </div>
-                </div>
-              </div>
-              <div class = "col-sm-3">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">xxo</h3>
-                  </div>
-                  <div class="panel-body">
-                    Panel content
-                  </div>
-                </div>
-              </div>
-              <div class = "col-sm-3">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">xoo</h3>
-                  </div>
-                  <div class="panel-body">
-                    Panel content
-                  </div>
-                </div>
-              </div>
+</div>
 
+</nav> -->
+
+<!-- Page Content -->
+<div class="container">
+  <div class="col-lg-12 text-center">
+    <image src = "image/LTGranprix.png" width = 60%>
+  </div>
+    <br><br>
+    <center>
+      <input id = "toggle-event" type="checkbox" checked data-toggle="toggle" data-on="DIRECT" data-off="PID" data-onstyle="success" data-offstyle="info" onclick = "hyoji1(0)">
+
+
+    </center>
+    <div id="direct" class="row"　 >
+      <br><br>
+      <div class = "col-sm-offset-3 col-sm-6 ">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Speed</h3>
+          </div>
+          <div class="panel-body">
+            Panel content
+          </div>
         </div>
-        <!-- /.row -->
+      </div>
+
+      <div class = "col-sm-offset-1 col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">oox</h3>
+          </div>
+          <div class="panel-body">
+            Panel content
+          </div>
+        </div>
+      </div>
+      <div class = "col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">oxx</h3>
+          </div>
+          <div class="panel-body">
+            Panel content
+          </div>
+        </div>
+      </div>
+      <div class = "col-sm-offset-1 col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">xxo</h3>
+          </div>
+          <div class="panel-body">
+            Panel content
+          </div>
+        </div>
+      </div>
+      <div class = "col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">xoo</h3>
+          </div>
+          <div class="panel-body">
+            Panel content
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row #direct-->
+
+
+    <div id="pid" class="row" style="display:none"　>
+      <br><br>
+      <div class = "col-sm-4 ">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">P_gain</h3>
+          </div>
+          <div class="panel-body">
+            Panel content
+          </div>
+        </div>
+      </div>
+
+      <div class = "col-sm-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">I_gain</h3>
+          </div>
+          <div class="panel-body">
+            Panel content
+          </div>
+        </div>
+      </div>
+      <div class = "col-sm-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">D_gain</h3>
+          </div>
+          <div class="panel-body">
+            Panel content
+          </div>
+        </div>
+      </div>
 
     </div>
-    <!-- /.container -->
+    <!-- row_ PID -->
+    <script>
+    $(function() {
+      $('#toggle-event').change(function() {
+        $('#console-event').html('Toggle: ' + $(this).prop('checked'))
+        if($(this).prop('checked')==false){
+          $('#direct').hide();
+          $('#pid').show();
+        }
+        else{
+          $('#direct').show();
+          $('#pid').hide();
+        }
+      })
+    });
+    </script>
+  </div>
+  <!-- /.container -->
 
-    <!-- jQuery Version 1.11.1 -->
-    <script src="js/jquery.js"></script>
+  <!-- jQuery Version 1.11.1 -->
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+
+
+
 
 </body>
 
