@@ -1,7 +1,5 @@
 <DOCTYPE html>
-  <html lang="en">
-
-  <head>
+  <html lang="ja"><head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,7 +18,11 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-toggle.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" src="css/bootstrap-select.min.css">
 
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="js/bootstrap-select.min.js"></script>
     <!-- Custom CSS -->
     <style>
     body {
@@ -35,7 +37,36 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <script>﻿function entryChange() {
+        radio = document.getElementsByName('mode')
+        if (radio[1].checked) {
+            document.getElementById('PIDSPEED').style.display = "";
+            document.getElementById('PID1').style.display = "";
+            document.getElementById('PID2').style.display = "";
+            document.getElementById('PID3').style.display = "";
+            document.getElementById('ONOFF1').style.display = "none";
+            document.getElementById('ONOFF2').style.display = "none";
+            document.getElementById('ONOFF3').style.display = "none";
+            document.getElementById('ONOFF4').style.display = "none";
+            document.getElementById('ONOFF5').style.display = "none";
+            document.getElementById('ONOFF6').style.display = "none";
+            document.getElementById('ONOFF7').style.display = "none";
+        } else if (radio[0].checked) {
+            document.getElementById('PIDSPEED').style.display = "none";
+            document.getElementById('PID1').style.display = "none";
+            document.getElementById('PID2').style.display = "none";
+            document.getElementById('PID3').style.display = "none";
+            document.getElementById('ONOFF1').style.display = "";
+            document.getElementById('ONOFF2').style.display = "";
+            document.getElementById('ONOFF3').style.display = "";
+            document.getElementById('ONOFF4').style.display = "";
+            document.getElementById('ONOFF5').style.display = "";
+            document.getElementById('ONOFF6').style.display = "";
+            document.getElementById('ONOFF7').style.display = "";
+        }
+    }
+    window.onload = entryChange;
+    </script>
   </head>
 
   <body>
@@ -78,12 +109,8 @@
     <image src = "image/LTGranprix.png" width = 60%>
   </div>
     <br><br>
-    <center>
-      <input id = "toggle-event" type="checkbox" checked data-toggle="toggle" data-on="DIRECT" data-off="PID" data-onstyle="success" data-offstyle="info" onclick = "hyoji1(0)">
 
-
-    </center>
-    <div id="direct" class="row"　 >
+    <!-- <div id="direct" class="row"　 >
       <br><br>
       <div class = "col-sm-offset-3 col-sm-6 ">
         <div class="panel panel-default">
@@ -136,8 +163,8 @@
           </div>
         </div>
       </div>
-    </div>
-    <!-- /.row #direct-->
+    </div> -->
+
 
 
     <div id="pid" class="row" style="display:none"　>
@@ -181,16 +208,300 @@
       $('#toggle-event').change(function() {
         $('#console-event').html('Toggle: ' + $(this).prop('checked'))
         if($(this).prop('checked')==false){
-          $('#direct').hide();
-          $('#pid').show();
+          $('#ON-OFF').hide();
+          $('#PID').show();
         }
         else{
-          $('#direct').show();
-          $('#pid').hide();
+          $('#ON-OFF').show();
+          $('#PID').hide();
         }
       })
     });
     </script>
+
+    <!-- <center>
+      <input id = "toggle-event" type="checkbox" checked data-toggle="toggle" data-on="DIRECT" data-off="PID" data-onstyle="success" data-offstyle="info" onclick = "hyoji1(0)">
+    </center> -->
+    <center><h2>データ送信フォーム</h2></center>
+    <br><br>
+    <form action="/send" method="POST">
+
+       <!-- <div class = "col-sm-6 sample">
+       <label ><input type="radio" name="mode" value="ON-OFF" onclick="entryChange();" checked="checked">
+        ON-OFF制御</label>
+       <label><input type="radio" name="mode" value="PID" onclick="entryChange();">PID制御</label> -->
+
+       <div class= "col-sm-4"><input type="text" name="name" placeholder="名前"></div>
+     <div class="sample col-sm-8">
+         <input type="radio" name="mode" id="on" onclick="entryChange();" value="ON-OFF" checked=""  >
+         <label for="on" class="switch-on">ON-OFF制御</label>
+         <input type="radio" name="mode" id="off" onclick="entryChange();" value="PID" >
+         <label for="off" class="switch-off">PID制御</label>
+     </div>
+     <br>
+
+
+
+
+
+     <br><br>
+       <table border="0" cellspacing="0" cellpadding="0" class = "table table-striped">
+         <div id="ON-OFF">
+          <tr id="ONOFF1">
+             <th>
+                <select name="rule1">
+                   <option value="none">未設定</option>
+                   <option value="000">✕✕✕</option>
+                   <option value="100">○✕✕</option>
+                   <option value="010">✕○✕</option>
+                   <option value="001">✕✕○</option>
+                   <option value="110">○○✕</option>
+                   <option value="101">○✕○</option>
+                   <option value="011">✕○○</option>
+                </select>
+                <p>のとき</p>
+             </th>
+             <td>
+                右輪
+                <select name="rule1r">
+                   <option value="stop">停止</option>
+                   <option value="for">正転</option>
+                   <option value="back">逆転</option>
+                </select>
+             </td>
+             <td>スピード<input type="number" name="rule1rs" value="0">%</td>
+             <td>
+                左輪
+                <select name="rule1l">
+                   <option value="stop">停止</option>
+                   <option value="for">正転</option>
+                   <option value="back">逆転</option>
+                </select>
+             </td>
+             <td>スピード<input type="number" name="rule1ls" value="0">%</td>
+          </tr>
+          <tr id="ONOFF2">
+             <th>
+                <select name="rule2">
+                   <option value="none">未設定</option>
+                   <option value="000">✕✕✕</option>
+                   <option value="100">○✕✕</option>
+                   <option value="010">✕○✕</option>
+                   <option value="001">✕✕○</option>
+                   <option value="110">○○✕</option>
+                   <option value="101">○✕○</option>
+                   <option value="011">✕○○</option>
+                </select>
+                <p>のとき</p>
+             </th>
+             <td>
+                右輪
+                <select name="rule2r">
+                   <option value="stop">停止</option>
+                   <option value="for">正転</option>
+                   <option value="back">逆転</option>
+                </select>
+             </td>
+             <td>スピード<input type="number" name="rule2rs" value="0">%</td>
+             <td>
+                左輪
+                <select name="rule2l">
+                   <option value="stop">停止</option>
+                   <option value="for">正転</option>
+                   <option value="back">逆転</option>
+                </select>
+             </td>
+             <td>スピード<input type="number" name="rule2ls" value="0">%</td>
+          </tr>
+          <tr id="ONOFF3">
+             <th>
+                <select name="rule3">
+                   <option value="none">未設定</option>
+                   <option value="000">✕✕✕</option>
+                   <option value="100">○✕✕</option>
+                   <option value="010">✕○✕</option>
+                   <option value="001">✕✕○</option>
+                   <option value="110">○○✕</option>
+                   <option value="101">○✕○</option>
+                   <option value="011">✕○○</option>
+                </select>
+                <br>
+                <p>のとき</p>
+             </th>
+             <td>
+                右輪
+                <select name="rule3r">
+                   <option value="stop">停止</option>
+                   <option value="for">正転</option>
+                   <option value="back">逆転</option>
+                </select>
+             </td>
+             <td>スピード<input type="number" name="rule3rs" value="0">%</td>
+             <td>
+                左輪
+                <select name="rule3l">
+                   <option value="stop">停止</option>
+                   <option value="for">正転</option>
+                   <option value="back">逆転</option>
+                </select>
+             </td>
+             <td>スピード<input type="number" name="rule3ls" value="0">%</td>
+          </tr>
+          <tr id="ONOFF4">
+             <th>
+                <select name="rule4">
+                   <option value="none">未設定</option>
+                   <option value="000">✕✕✕</option>
+                   <option value="100">○✕✕</option>
+                   <option value="010">✕○✕</option>
+                   <option value="001">✕✕○</option>
+                   <option value="110">○○✕</option>
+                   <option value="101">○✕○</option>
+                   <option value="011">✕○○</option>
+                </select>
+                <p>のとき</p>
+             </th>
+             <td>
+                右輪
+                <select name="rule4r">
+                   <option value="stop">停止</option>
+                   <option value="for">正転</option>
+                   <option value="back">逆転</option>
+                </select>
+             </td>
+             <td>スピード<input type="number" name="rule4rs" value="0">%</td>
+             <td>
+                左輪
+                <select name="rule4l">
+                   <option value="stop">停止</option>
+                   <option value="for">正転</option>
+                   <option value="back">逆転</option>
+                </select>
+             </td>
+             <td>スピード<input type="number" name="rule4ls" value="0">%</td>
+          </tr>
+          <tr id="ONOFF5">
+             <th>
+                <select name="rule5">
+                   <option value="none">未設定</option>
+                   <option value="000">✕✕✕</option>
+                   <option value="100">○✕✕</option>
+                   <option value="010">✕○✕</option>
+                   <option value="001">✕✕○</option>
+                   <option value="110">○○✕</option>
+                   <option value="101">○✕○</option>
+                   <option value="011">✕○○</option>
+                </select>
+                <p>のとき</p>
+             </th>
+             <td>
+                右輪
+                <select name="rule5r">
+                   <option value="stop">停止</option>
+                   <option value="for">正転</option>
+                   <option value="back">逆転</option>
+                </select>
+             </td>
+             <td>スピード<input type="number" name="rule5rs" value="0">%</td>
+             <td>
+                左輪
+                <select name="rule5l">
+                   <option value="stop">停止</option>
+                   <option value="for">正転</option>
+                   <option value="back">逆転</option>
+                </select>
+             </td>
+             <td>スピード<input type="number" name="rule5ls" value="0">%</td>
+          </tr>
+          <tr id="ONOFF6">
+             <th>
+                <select name="rule6">
+                   <option value="none">未設定</option>
+                   <option value="000">✕✕✕</option>
+                   <option value="100">○✕✕</option>
+                   <option value="010">✕○✕</option>
+                   <option value="001">✕✕○</option>
+                   <option value="110">○○✕</option>
+                   <option value="101">○✕○</option>
+                   <option value="011">✕○○</option>
+                </select>
+                <p>のとき</p>
+             </th>
+             <td>
+                右輪
+                <select name="rule6r">
+                   <option value="stop">停止</option>
+                   <option value="for">正転</option>
+                   <option value="back">逆転</option>
+                </select>
+             </td>
+             <td>スピード<input type="number" name="rule6rs" value="0">%</td>
+             <td>
+                左輪
+                <select name="rule6l">
+                   <option value="stop">停止</option>
+                   <option value="for">正転</option>
+                   <option value="back">逆転</option>
+                </select>
+             </td>
+             <td>スピード<input type="number" name="rule6ls" value="0">%</td>
+          </tr>
+          <tr id="ONOFF7">
+             <th>
+                <select name="rule7">
+                   <option value="none">未設定</option>
+                   <option value="000">✕✕✕</option>
+                   <option value="100">○✕✕</option>
+                   <option value="010">✕○✕</option>
+                   <option value="001">✕✕○</option>
+                   <option value="110">○○✕</option>
+                   <option value="101">○✕○</option>
+                   <option value="011">✕○○</option>
+                </select>
+                のとき
+             </th>
+             <td>
+                右輪
+                <select name="rule7r">
+                   <option value="stop">停止</option>
+                   <option value="for">正転</option>
+                   <option value="back">逆転</option>
+                </select>
+             </td>
+             <td>スピード<input type="number" name="rule7rs" value="0">%</td>
+             <td>
+                左輪
+                <select name="rule7l">
+                   <option value="stop">停止</option>
+                   <option value="for">正転</option>
+                   <option value="back">逆転</option>
+                </select>
+             </td>
+             <td>スピード<input type="number" name="rule7ls" value="0">%</td>
+          </tr>
+        </div>
+          <div id = "PID" class = "col-sm-12">
+          <tr id="PIDSPEED">
+             <th>スピード</th>
+             <td><input type="number" name="SPEED" value="0"></td>
+          </tr>
+          <tr id="PID1">
+             <th>P</th>
+             <td><input type="number" name="P" value="0"></td>
+          </tr>
+          <tr id="PID2">
+             <th>I</th>
+             <td><input type="number" name="I" value="0"></td>
+          </tr>
+          <tr id="PID3">
+             <th>D</th>
+             <td><input type="number" name="D" value="0"></td>
+          </tr>
+        </div>
+       </table>
+       <input type="submit" class = "btn btn-primary">
+    </form>
+
   </div>
   <!-- /.container -->
 
