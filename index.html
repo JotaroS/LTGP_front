@@ -44,6 +44,7 @@
             document.getElementById('PID1').style.display = "";
             document.getElementById('PID2').style.display = "";
             document.getElementById('PID3').style.display = "";
+            document.getElementById('ONOFFSPEED').style.display = "none";
             document.getElementById('ONOFF1').style.display = "none";
             document.getElementById('ONOFF2').style.display = "none";
             document.getElementById('ONOFF3').style.display = "none";
@@ -56,6 +57,7 @@
             document.getElementById('PID1').style.display = "none";
             document.getElementById('PID2').style.display = "none";
             document.getElementById('PID3').style.display = "none";
+            document.getElementById('ONOFFSPEED').style.display = "";
             document.getElementById('ONOFF1').style.display = "";
             document.getElementById('ONOFF2').style.display = "";
             document.getElementById('ONOFF3').style.display = "";
@@ -247,7 +249,16 @@
      <br><br>
        <table border="0" cellspacing="0" cellpadding="0" class = "table table-striped">
          <div id="ON-OFF">
+           <tr id = "ONOFFSPEED">
+             <th>
+               全体スピード
+             </th>
+             <td>
+              　<td>スピード<input type="number" name="onoffspeed" value="0">%</td>
+             </td>
+           </tr>
           <tr id="ONOFF1">
+
              <th>
                 <select name="rule1">
                    <option value="none">未設定</option>
