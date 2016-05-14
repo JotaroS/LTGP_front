@@ -11,6 +11,9 @@ image{
 table{
   color: #BBFFBB;
 }
+select{
+  color:#333333;
+}
 input{
   color:#111111;
 }
